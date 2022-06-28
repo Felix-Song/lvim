@@ -11,7 +11,7 @@ an executable
 vim.wo.relativenumber = true
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "onedarker"
+lvim.colorscheme = "github_dimmed"
 vim.cmd('set clipboard+=unnamedplus')
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
@@ -239,6 +239,20 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 -- Additional Plugins
 lvim.plugins = {
+  { "doums/floaterm.nvim",
+    config = function()
+      require("floaterm").setup({
+        keymaps = { exit = '<C-t>', normal = '<C-t>' },
+      })
+    end,
+  },
+  { "folke/tokyonight.nvim" },
+  { "projekt0n/github-nvim-theme",
+    config = function()
+      require('github-theme').setup({})
+    end,
+  },
+  { 'navarasu/onedark.nvim' },
   -- {
   --   "Pocco81/AutoSave.nvim",
   --   config = function()
@@ -259,7 +273,6 @@ lvim.plugins = {
   --     })
   --   end,
   -- },
-  -- {"folke/tokyonight.nvim"},
   -- {
   --   "folke/trouble.nvim",
   --   cmd = "TroubleToggle",
