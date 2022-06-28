@@ -20,11 +20,11 @@ lvim.colorscheme = "onedarker"
 lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+lvim.keys.normal_mode["<C-q>"] = false -- <C-q> is go into visual block mode
+-- lvim.keys.normal_mode["<C-q>"] = ":q<cr>" -- or vim.keymap.set("n", "<C-q>", ":q<cr>" )
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
 -- override a default keymapping
-lvim.keys.normal_mode["<C-q>"] = ":q<cr>" -- or vim.keymap.set("n", "<C-q>", ":q<cr>" )
-
 -- cmp settings
 lvim.builtin.cmp.completion = {
   completeopt = 'menu,menuone,noinsert' -- helight first selection
@@ -60,7 +60,6 @@ lvim.builtin.cmp.completion = {
 --   w = { "<cmd>Trouble workspace_diagnostics<cr>", "Wordspace Diagnostics" },
 -- }
 
--- lvim.builtin.which_key.list_registered={}
 lvim.builtin.which_key.mappings["t"] = {
   name = "+Terminal",
   t = { ":terminal<cr>", "open in new window" },
