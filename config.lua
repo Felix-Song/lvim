@@ -56,8 +56,13 @@ lvim.builtin.cmp.completion = {
 -- }
 
 -- Use which-key to add extra bindings with the leader-key prefix
--- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
--- lvim.builtin.which_key.mappings["t"] = {
+lvim.builtin.which_key.mappings["P"] = {
+  name = "+Telescope",
+  p = { "<cmd>Telescope projects<CR>", "Projects" },
+  f = { "<cmd>Telescope find_files<CR>", "Files" },
+  -- l = { "<cmd>Telescope live_grep<CR>", "Live Grep" },
+}
+-- lvim.builtin.which_key.mappings["T"] = {
 --   name = "+Trouble",
 --   r = { "<cmd>Trouble lsp_references<cr>", "References" },
 --   f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
