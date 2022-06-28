@@ -199,26 +199,26 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 -- Additional Plugins
 lvim.plugins = {
-  {
-    "Pocco81/AutoSave.nvim",
-    config = function()
-      require("autosave").setup({
-        enable = true,
-        execution_message = "",
-        events = { "InsertLeave", "TextChanged" },
-        conditions = {
-          exists = true,
-          filename_is_not = { "config.lua" },
-          filetype_is_not = {},
-          modifiable = true,
-        },
-        write_all_buffers = false,
-        on_off_commands = true,
-        clean_command_line_interval = 0,
-        debounce_delay = 135,
-      })
-    end,
-  },
+  -- {
+  --   "Pocco81/AutoSave.nvim",
+  --   config = function()
+  --     require("autosave").setup({
+  --       enable = false,
+  --       execution_message = "",
+  --       events = { "InsertLeave", "TextChanged" },
+  --       conditions = {
+  --         exists = true,
+  --         filename_is_not = { "config.lua" },
+  --         filetype_is_not = {},
+  --         modifiable = true,
+  --       },
+  --       write_all_buffers = false,
+  --       on_off_commands = true,
+  --       clean_command_line_interval = 0,
+  --       debounce_delay = 135,
+  --     })
+  --   end,
+  -- },
   -- {"folke/tokyonight.nvim"},
   -- {
   --   "folke/trouble.nvim",
