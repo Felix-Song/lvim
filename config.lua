@@ -19,8 +19,15 @@ lvim.colorscheme = "onedarker"
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- add your own keymapping
-lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
-lvim.keys.normal_mode["<C-q>"] = false -- <C-q> is go into visual block mode
+lvim.keys.normal_mode = {
+  ["<C-s>"] = ":w<cr>",
+  ["<C-q>"] = false,
+  ["<C-z>"] = "u",
+}
+lvim.keys.insert_mode = {
+  ["<C-s>"] = ":w<cr>",
+  ["<C-z>"] = "<esc>u",
+}
 -- lvim.keys.normal_mode["<C-q>"] = ":q<cr>" -- or vim.keymap.set("n", "<C-q>", ":q<cr>" )
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
