@@ -101,6 +101,10 @@ lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.cmp.completion = {
   completeopt = 'menu,menuone,noinsert' -- helight first selection
 }
+-- nvimtree settings
+lvim.builtin.nvimtree.setup.view.mappings.list = {
+  { key = "O", action = "cd" },
+}
 
 
 -- if you don't want all the parsers change this to a table of the ones you want
