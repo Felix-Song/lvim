@@ -56,7 +56,6 @@ lvim.builtin.which_key.mappings["P"] = {
   name = "+Telescope",
   p = { "<cmd>Telescope projects<CR>", "Projects" },
   f = { "<cmd>Telescope find_files<CR>", "Files" },
-  -- l = { "<cmd>Telescope live_grep<CR>", "Live Grep" },
 }
 -- lvim.builtin.which_key.mappings["T"] = {
 --   name = "+Trouble",
@@ -84,7 +83,31 @@ lvim.builtin.which_key.mappings["w"] = {
   k = { "<C-w>k", "select top window" },
   l = { "<C-w>l", "select right window" },
   c = { ":q<cr>", "close window" },
-
+}
+lvim.builtin.which_key.mappings["b"] = {
+  name = "+Buffers",
+  j = { "<cmd>BufferLinePick<cr>", "Jump" },
+  f = { "<cmd>Telescope buffers<cr>", "Find" },
+  b = { "<cmd>BufferLineCyclePrev<cr>", "Previous" },
+  -- w = { "<cmd>BufferWipeout<cr>", "Wipeout" }, -- TODO: implement this for bufferline
+  e = {
+    "<cmd>BufferLinePickClose<cr>",
+    "Pick which buffer to close",
+  },
+  h = { "<cmd>BufferLineCloseLeft<cr>", "Close all to the left" },
+  l = {
+    "<cmd>BufferLineCloseRight<cr>",
+    "Close all to the right",
+  },
+  D = {
+    "<cmd>BufferLineSortByDirectory<cr>",
+    "Sort by directory",
+  },
+  L = {
+    "<cmd>BufferLineSortByExtension<cr>",
+    "Sort by language",
+  },
+  n = { ":bn<cr>", "next" },
 }
 
 -- TODO: User Config for predefined plugins
@@ -114,6 +137,8 @@ lvim.builtin.nvimtree.setup.view = {
       { key = "h", action = "close_node" },
       { key = "v", action = "vsplit" },
       { key = "O", action = "cd" },
+      { key = "<C-t>", action = "tabnew" },
+      { key = "<Tab>", action = "preview" }
     },
   }
 }
