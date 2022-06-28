@@ -93,7 +93,7 @@ lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
-lvim.builtin.nvimtree.setup.view.side = "left"
+-- lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 
 -- plugin settings
@@ -102,10 +102,21 @@ lvim.builtin.cmp.completion = {
   completeopt = 'menu,menuone,noinsert' -- helight first selection
 }
 -- nvimtree settings
-lvim.builtin.nvimtree.setup.view.mappings.list = {
-  { key = "O", action = "cd" },
+lvim.builtin.nvimtree.setup.view = {
+  width = 20,
+  hide_root_folder = false,
+  side = "left",
+  auto_resize = true,
+  mappings = {
+    custom_only = false,
+    list = {
+      { key = { "l", "<CR>", "o" }, action = "edit" },
+      { key = "h", action = "close_node" },
+      { key = "v", action = "vsplit" },
+      { key = "O", action = "cd" },
+    },
+  }
 }
-
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
