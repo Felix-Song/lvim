@@ -23,7 +23,7 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
 -- override a default keymapping
--- lvim.keys.normal_mode["<C-q>"] = ":q<cr>" -- or vim.keymap.set("n", "<C-q>", ":q<cr>" )
+lvim.keys.normal_mode["<C-q>"] = ":q<cr>" -- or vim.keymap.set("n", "<C-q>", ":q<cr>" )
 
 -- cmp settings
 lvim.builtin.cmp.completion = {
@@ -59,12 +59,25 @@ lvim.builtin.cmp.completion = {
 --   l = { "<cmd>Trouble loclist<cr>", "LocationList" },
 --   w = { "<cmd>Trouble workspace_diagnostics<cr>", "Wordspace Diagnostics" },
 -- }
-vim.api.nvim_set_keymap('t', '<esc>', '<C-\\><C-n>', { noremap = true, silent = true })
+
+-- lvim.builtin.which_key.list_registered={}
 lvim.builtin.which_key.mappings["t"] = {
   name = "+Terminal",
   t = { ":terminal<cr>", "open in new window" },
   j = { ":5sp | terminal<cr>", "open below" },
   l = { ":vsp | terminal<cr>", "open on right" },
+  c = { ":close<cr>", "close terminal" },
+  vim.api.nvim_set_keymap('t', '<esc>', '<C-\\><C-n>', { noremap = true, silent = true }),
+}
+lvim.builtin.which_key.mappings["w"] = {
+  name = "+Windows",
+  w = { "<C-w>w", "next window" },
+  h = { "<C-w>h", "select left window" },
+  j = { "<C-w>j", "select bottom window" },
+  k = { "<C-w>k", "select top window" },
+  l = { "<C-w>l", "select right window" },
+  c = { ":q<cr>", "close window" },
+
 }
 
 -- TODO: User Config for predefined plugins
