@@ -25,17 +25,13 @@ lvim.keys.normal_mode = {
   ["<C-z>"] = "u",
 }
 lvim.keys.insert_mode = {
-  ["<C-s>"] = ":w<cr>",
+  ["<C-s>"] = "<esc>:w<cr>",
   ["<C-z>"] = "<esc>u",
 }
 -- lvim.keys.normal_mode["<C-q>"] = ":q<cr>" -- or vim.keymap.set("n", "<C-q>", ":q<cr>" )
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
 -- override a default keymapping
--- cmp settings
-lvim.builtin.cmp.completion = {
-  completeopt = 'menu,menuone,noinsert' -- helight first selection
-}
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
@@ -99,6 +95,13 @@ lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
+
+-- plugin settings
+-- cmp settings
+lvim.builtin.cmp.completion = {
+  completeopt = 'menu,menuone,noinsert' -- helight first selection
+}
+
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
@@ -195,13 +198,33 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- }
 
 -- Additional Plugins
--- lvim.plugins = {
---     {"folke/tokyonight.nvim"},
---     {
---       "folke/trouble.nvim",
---       cmd = "TroubleToggle",
---     },
--- }
+lvim.plugins = {
+  {
+    "Pocco81/AutoSave.nvim",
+    config = function()
+      require("autosave").setup({
+        enable = true,
+        execution_message = "",
+        events = { "InsertLeave", "TextChanged" },
+        conditions = {
+          exists = true,
+          filename_is_not = { "config.lua" },
+          filetype_is_not = {},
+          modifiable = true,
+        },
+        write_all_buffers = false,
+        on_off_commands = true,
+        clean_command_line_interval = 0,
+        debounce_delay = 135,
+      })
+    end,
+  },
+  -- {"folke/tokyonight.nvim"},
+  -- {
+  --   "folke/trouble.nvim",
+  --   cmd = "TroubleToggle",
+  -- },
+}
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- vim.api.nvim_create_autocmd("BufEnter", {
