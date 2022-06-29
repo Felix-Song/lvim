@@ -8,11 +8,8 @@ an executable
 ]]
 -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
 -- general
-vim.wo.relativenumber = true
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "github_dimmed"
-vim.cmd('set clipboard+=unnamedplus')
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
@@ -108,6 +105,7 @@ lvim.builtin.which_key.mappings["b"] = {
     "Sort by language",
   },
   n = { ":bn<cr>", "next" },
+  c = { ":bd<cr>", "close this buffer" },
 }
 
 -- TODO: User Config for predefined plugins
@@ -116,8 +114,7 @@ lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
--- lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
+lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
 
 -- plugin settings
 -- cmp settings
@@ -129,7 +126,7 @@ lvim.builtin.nvimtree.setup.view = {
   width = 20,
   hide_root_folder = false,
   side = "left",
-  auto_resize = true,
+  auto_resize = false,
   mappings = {
     custom_only = false,
     list = {
