@@ -1,37 +1,27 @@
---[[
-lvim is the global options object
-
-Linters should be
-filled in as strings with either
-a global executable or a path to
-an executable
-]]
--- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
--- general
 require("basic")
-require("colorscheme")
 require("keybind")
+require("plugins.lvim-plugins")
+
+-- colorscheme
+-- lvim.colorscheme = "github_dimmed"
+lvim.colorscheme = "github_light"
+
+-- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
--- keymappings [view all the defaults by pressing <leader>Lk]
--- add your own keymapping
-
-
--- TODO: User Config for predefined plugins
--- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
+-- core plugins settings
+-- alpha.nvim
+lvim.builtin.alpha.active = true
+lvim.builtin.alpha.mode = "dashboard"
+-- nvim.notify
 lvim.builtin.notify.active = true
+-- toggleterm
 lvim.builtin.terminal.active = true
+-- nvimtree
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
-
--- plugin settings
--- cmp settings
-lvim.builtin.cmp.completion = {
-  completeopt = 'menu,menuone,noinsert' -- helight first selection
-}
--- nvimtree settings
 lvim.builtin.nvimtree.setup.view = {
   width = 20,
   hide_root_folder = false,
@@ -43,11 +33,16 @@ lvim.builtin.nvimtree.setup.view = {
       { key = { "l", "<CR>", "o" }, action = "edit" },
       { key = "h", action = "close_node" },
       { key = "v", action = "vsplit" },
+      { key = "s", action = "split" },
       { key = "O", action = "cd" },
       { key = "<C-t>", action = "tabnew" },
       { key = "<Tab>", action = "preview" }
     },
   }
+}
+-- cmp
+lvim.builtin.cmp.completion = {
+  completeopt = 'menu,menuone,noinsert' -- helight first selection
 }
 
 -- if you don't want all the parsers change this to a table of the ones you want
@@ -70,12 +65,13 @@ lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
 -- generic LSP settings
-
 -- -- make sure server will always be installed even if the server is in skipped_servers list
--- lvim.lsp.installer.setup.ensure_installed = {
---     "sumeko_lua",
---     "jsonls",
--- }
+lvim.lsp.installer.setup.ensure_installed = {
+  "sumeko_lua",
+  "clangd",
+  "jsonls",
+  "html",
+}
 -- -- change UI setting of `LspInstallInfo`
 -- -- see <https://github.com/williamboman/nvim-lsp-installer#default-configuration>
 -- lvim.lsp.installer.setup.ui.check_outdated_servers_on_open = false
@@ -86,7 +82,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- }
 
 -- ---@usage disable automatic installation of servers
--- lvim.lsp.automatic_servers_installation = false
+lvim.lsp.automatic_servers_installation = true
 
 -- ---configure a server manually. !!Requires `:LvimCacheReset` to take effect!!
 -- ---see the full default list `:lua print(vim.inspect(lvim.lsp.automatic_configuration.skipped_servers))`
@@ -145,46 +141,6 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- }
 
 -- Additional Plugins
-lvim.plugins = {
-  { "doums/floaterm.nvim",
-    config = function()
-      require("floaterm").setup({
-        keymaps = { exit = '<C-t>', normal = '<C-t>' },
-      })
-    end,
-  },
-  { "folke/tokyonight.nvim" },
-  { "projekt0n/github-nvim-theme",
-    config = function()
-      require('github-theme').setup({})
-    end,
-  },
-  { 'navarasu/onedark.nvim' },
-  -- {
-  --   "Pocco81/AutoSave.nvim",
-  --   config = function()
-  --     require("autosave").setup({
-  --       enable = false,
-  --       execution_message = "",
-  --       events = { "InsertLeave", "TextChanged" },
-  --       conditions = {
-  --         exists = true,
-  --         filename_is_not = { "config.lua" },
-  --         filetype_is_not = {},
-  --         modifiable = true,
-  --       },
-  --       write_all_buffers = false,
-  --       on_off_commands = true,
-  --       clean_command_line_interval = 0,
-  --       debounce_delay = 135,
-  --     })
-  --   end,
-  -- },
-  -- {
-  --   "folke/trouble.nvim",
-  --   cmd = "TroubleToggle",
-  -- },
-}
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- vim.api.nvim_create_autocmd("BufEnter", {

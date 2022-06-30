@@ -6,7 +6,7 @@
   vim.wo.{option}: window-local 选项
 --]]
 
--- 启用系统剪切板
+-- -- 启用系统剪切板
 vim.cmd('set clipboard+=unnamedplus')
 -- utf8
 vim.g.encoding = "UTF-8"
