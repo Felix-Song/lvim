@@ -18,8 +18,9 @@ lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
 -- nvim.notify
 lvim.builtin.notify.active = true
--- toggleterm
+-- toggleterm.nvim
 lvim.builtin.terminal.active = true
+lvim.builtin.terminal.open_mapping = [[<c-\>]]
 -- nvimtree
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
 lvim.builtin.nvimtree.setup.view = {
@@ -67,10 +68,13 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- generic LSP settings
 -- -- make sure server will always be installed even if the server is in skipped_servers list
 lvim.lsp.installer.setup.ensure_installed = {
+  "bashls",
   "sumeko_lua",
   "clangd",
   "jsonls",
-  "html",
+  -- "html",
+  -- "cssls",
+  -- "emmet_ls ",
 }
 -- -- change UI setting of `LspInstallInfo`
 -- -- see <https://github.com/williamboman/nvim-lsp-installer#default-configuration>
