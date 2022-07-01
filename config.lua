@@ -3,8 +3,8 @@ require("keybind")
 require("plugins.lvim-plugins")
 
 -- colorscheme
--- lvim.colorscheme = "github_dimmed"
-lvim.colorscheme = "github_light"
+lvim.colorscheme = "github_dimmed"
+-- lvim.colorscheme = "github_light"
 
 -- general
 lvim.log.level = "warn"
